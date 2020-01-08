@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 12:17:34 by alpeliss          #+#    #+#             */
-/*   Updated: 2020/01/07 12:34:51 by alpeliss         ###   ########.fr       */
+/*   Created: 2020/01/06 11:10:56 by alpeliss          #+#    #+#             */
+/*   Updated: 2020/01/07 12:51:21 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+int	ft_atoi(const char *str)
 {
-	size_t	i;
-	char	*a;
-	char	*b;
+	int	tot;
+	int	m;
+	int	i;
 
-	a = (char *)src;
-	b = (char *)dst;
+	if (!str)
+		return (0);
+	tot = 0;
 	i = 0;
-	while (i < n && a[i] != (unsigned char)c)
+	m = 1;
+	while (str[i] && ((str[i] >= 9 && str[i] <= 13) || str[i] == ' '))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		b[i] = a[i];
+		if (str[i] == '-')
+			m = -1;
 		i++;
 	}
-	if (i == n)
-		return (NULL);
-	b[i] = a[i];
-	return (&b[i + 1]);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		tot = tot * 10 + (str[i] - '0') * m;
+		i++;
+	}
+	return (tot);
 }

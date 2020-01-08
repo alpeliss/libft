@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/06 11:10:56 by alpeliss          #+#    #+#             */
-/*   Updated: 2020/01/06 11:20:16 by alpeliss         ###   ########.fr       */
+/*   Created: 2020/01/06 09:50:27 by alpeliss          #+#    #+#             */
+/*   Updated: 2020/01/07 12:52:57 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+int		ft_isalnum(int c)
 {
-	int	tot;
-	int	m;
-	int	i;
-
-	if (!str)
-		return (0);
-	tot = 0;
-	i = 0;
-	while (str[i] && str[i] >= 9 && str[i] <= 13)
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			m = -1;
-		i++;
-	}
-	while (str[i] >= 0 && str[i] <= 9)
-	{
-		tot = tot * 10 + (str[i] - '0') * m;
-		i++;
-	}
-	return (tot);
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
+			|| (c >= '0' && c <= '9'))
+		return (c);
+	return (0);
 }

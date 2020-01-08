@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 12:17:34 by alpeliss          #+#    #+#             */
-/*   Updated: 2020/01/07 12:34:51 by alpeliss         ###   ########.fr       */
+/*   Created: 2019/11/01 14:29:51 by alpeliss          #+#    #+#             */
+/*   Updated: 2020/01/07 15:19:08 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t	i;
-	char	*a;
-	char	*b;
+	int		dest_len;
 
-	a = (char *)src;
-	b = (char *)dst;
+	if (!dest || !src)
+		return (ft_strlen(dest) + ft_strlen(src));
+	dest_len = ft_strlen(dest);
+	if (size == 0)
+		return (ft_strlen(src));
+	if ((int)size < 0)
+		size = dest_len + ft_strlen(src) + 1;
 	i = 0;
-	while (i < n && a[i] != (unsigned char)c)
+	while (dest_len + i < size - 1 && src[i])
 	{
-		b[i] = a[i];
+		dest[dest_len + i] = src[i];
 		i++;
 	}
-	if (i == n)
-		return (NULL);
-	b[i] = a[i];
-	return (&b[i + 1]);
+	dest[dest_len + i] = '\0';
+	size = ((int)size > dest_len) ? dest_len : size;
+	return (size + ft_strlen(src));
 }

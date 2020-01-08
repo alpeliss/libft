@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/06 09:57:47 by alpeliss          #+#    #+#             */
-/*   Updated: 2020/01/06 11:07:56 by alpeliss         ###   ########.fr       */
+/*   Created: 2020/01/06 09:42:21 by alpeliss          #+#    #+#             */
+/*   Updated: 2020/01/07 12:36:07 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+#include "libft.h"
+
+size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	if (!s)
 		return (0);
 	i = 0;
 	while (s[i])
-	{
-		if (s[i] == c)
-			return (&s[i]);
 		i++;
-	}
-	if (!c)
-		return (&s[i]);
-	return (0);
+	return (i);
 }

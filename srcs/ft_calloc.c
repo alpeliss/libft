@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 12:17:34 by alpeliss          #+#    #+#             */
-/*   Updated: 2020/01/07 12:34:51 by alpeliss         ###   ########.fr       */
+/*   Created: 2020/01/07 16:34:08 by alpeliss          #+#    #+#             */
+/*   Updated: 2020/01/07 16:37:30 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+void	*ft_calloc(size_t count, size_t size)
 {
+	char	*t;
 	size_t	i;
-	char	*a;
-	char	*b;
 
-	a = (char *)src;
-	b = (char *)dst;
+	if (!(t = (char *)malloc(count * size * sizeof(char))))
+		return (0);
 	i = 0;
-	while (i < n && a[i] != (unsigned char)c)
+	while (i < count * size)
 	{
-		b[i] = a[i];
+		t[i] = 0;
 		i++;
 	}
-	if (i == n)
-		return (NULL);
-	b[i] = a[i];
-	return (&b[i + 1]);
+	return ((void *)t);
 }

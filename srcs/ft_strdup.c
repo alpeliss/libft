@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 12:17:34 by alpeliss          #+#    #+#             */
-/*   Updated: 2020/01/07 12:34:51 by alpeliss         ###   ########.fr       */
+/*   Created: 2019/11/05 23:40:42 by alpeliss          #+#    #+#             */
+/*   Updated: 2020/01/07 15:53:36 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "stdlib.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+char	*ft_strdup(const char *src)
 {
-	size_t	i;
-	char	*a;
-	char	*b;
+	int		i;
+	char	*copy;
 
-	a = (char *)src;
-	b = (char *)dst;
+	if (!src)
+		return (NULL);
 	i = 0;
-	while (i < n && a[i] != (unsigned char)c)
+	while (src[i])
+		i++;
+	if (!(copy = (char *)malloc((i + 1) * sizeof(char))))
+		return (NULL);
+	i = 0;
+	while (src[i])
 	{
-		b[i] = a[i];
+		copy[i] = src[i];
 		i++;
 	}
-	if (i == n)
-		return (NULL);
-	b[i] = a[i];
-	return (&b[i + 1]);
+	copy[i] = '\0';
+	return (copy);
 }

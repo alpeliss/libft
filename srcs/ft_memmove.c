@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/06 11:02:45 by alpeliss          #+#    #+#             */
-/*   Updated: 2020/01/06 11:07:44 by alpeliss         ###   ########.fr       */
+/*   Created: 2020/01/07 17:14:33 by alpeliss          #+#    #+#             */
+/*   Updated: 2020/01/07 17:19:05 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	size_t	i;
+#include "libft.h"
 
-	if ((!s1 && !s2) || n <= 0)
-		return (0);
-	else if (!s1)
-		return (-s2[0]);
-	else if (!s2)
-		return (s1[0]);
-	i = 0;
-	while (i < n - 1 && s1[i] && s2[i])
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	size_t			t;
+	unsigned char	*dest;
+	unsigned char	*source;
+
+	dest = (unsigned char *)dst;
+	source = (unsigned char *)src;
+	t = len;
+	if (dst > src)
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
+		while (t > 0)
+		{
+			dest[t - 1] = source[t - 1];
+			t--;
+		}
 	}
-	return (s1[i] - s2[i]);
+	else if (src > dst)
+		ft_memcpy(dst, src, len);
+	return (dst);
 }
