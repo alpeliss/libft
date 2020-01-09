@@ -6,18 +6,11 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 11:02:45 by alpeliss          #+#    #+#             */
-/*   Updated: 2020/01/07 13:18:58 by alpeliss         ###   ########.fr       */
+/*   Updated: 2020/01/09 14:51:38 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	abs(int i)
-{
-	if (i < 0)
-		return (-i);
-	return (i);
-}
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -33,7 +26,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	while (i < n - 1 && s1[i] && s2[i])
 	{
 		if (s1[i] != s2[i])
-			return (abs(s1[i]) - abs(s2[i]));
+			return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
 		i++;
 	}
 	return (abs(s1[i]) - abs(s2[i]));

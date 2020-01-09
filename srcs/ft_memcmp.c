@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 16:44:24 by alpeliss          #+#    #+#             */
-/*   Updated: 2020/01/07 16:47:49 by alpeliss         ###   ########.fr       */
+/*   Updated: 2020/01/09 14:49:05 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ static int	ab(int i)
 
 int			ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	*sa;
-	char	*sb;
-	size_t	i;
+	unsigned char	*sa;
+	unsigned char	*sb;
+	size_t			i;
 
-	sa = (char *)s1;
-	sb = (char *)s2;
+	sa = (unsigned char *)s1;
+	sb = (unsigned char *)s2;
 	if ((!sa && !sb) || n <= 0)
 		return (0);
 	else if (!sa)
@@ -34,7 +34,7 @@ int			ft_memcmp(const void *s1, const void *s2, size_t n)
 	else if (!sb)
 		return (sa[0]);
 	i = 0;
-	while (i < n - 1 && sa[i] && sb[i])
+	while (i < n - 1)
 	{
 		if (sa[i] != sb[i])
 			return (ab(sa[i]) - ab(sb[i]));

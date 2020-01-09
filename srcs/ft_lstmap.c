@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/06 15:50:08 by alpeliss          #+#    #+#             */
-/*   Updated: 2020/01/08 17:21:31 by alpeliss         ###   ########.fr       */
+/*   Created: 2020/01/09 17:12:15 by alpeliss          #+#    #+#             */
+/*   Updated: 2020/01/09 17:28:10 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char	*res;
-	size_t	i;
-	size_t	size;
+	t_list	*deb;
+	t_list	*new;
 
-	size = ft_strlen(s);
-	if (!s || size < start)
+	if (!lst || !(deb = ft_lstnew(f(lst->content))))
 		return (0);
-	len = (start + len < size) ? len : size - start;
-	if (!(res = (char *)malloc((len + 1) * sizeof(char))))
-		return (0);
-	i = 0;
-	while (s[start + i] && i < len)
+	new = deb;
+	while (lst->next)
 	{
-		res[i] = s[start + i];
-		i++;
+		lst = lst->next;
+		new = new->next;
+		if (!(new = ft_lstnew(f(lst->content))))
+		{
+			ft_lstclear(&deb, del);
+			return (0);
+		}
 	}
-	res[i] = '\0';
-	return (res);
+	return (deb);
 }

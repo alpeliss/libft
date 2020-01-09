@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 16:38:27 by alpeliss          #+#    #+#             */
-/*   Updated: 2020/01/07 16:43:34 by alpeliss         ###   ########.fr       */
+/*   Updated: 2020/01/09 14:44:43 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 		return (0);
 	i = 0;
 	tmp = (char *)s;
-	while (tmp[i] && i < n)
+	while (i < n)
 	{
 		if (tmp[i] == c)
 			return (&tmp[i]);
